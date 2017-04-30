@@ -22,14 +22,17 @@ struct Node
 class LinkedList
 {
 	public:
-		LinkedList();                   // default constructor
-		~LinkedList();                  // destructor
-		void  AddTail(int);             // adds item to tail
-		bool  RemoveHead();				// removes item from head
-		void  AddHead(int);				// adds item to head
-		bool  RemoveTail();				// removes item from tail
-		void  Print();                  // prints list
+		LinkedList ();									// default constructor
+		LinkedList operator()(const LinkedList *clist); 			// copy constructor
+		LinkedList operator=(const LinkedList * obj);
 
+		~LinkedList();									// destructor
+		void  AddTail(int);								// adds item to tail
+		bool  RemoveHead();								// removes item from head
+		void  AddHead(int);								// adds item to head
+		bool  RemoveTail();								// removes item from tail
+		void  Print();									// prints list
+			
 	private:
 		NodePtr Head;
 };

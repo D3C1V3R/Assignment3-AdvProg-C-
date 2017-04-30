@@ -10,16 +10,49 @@
 using namespace std;
 
 // Default constructor
-LinkedList::LinkedList()
-{	
+LinkedList::LinkedList(){	
 	Head = NULL; 	// set Head to NULL
+}
+
+// Copy constructor
+LinkedList LinkedList::operator()(const LinkedList *clist) {
+	Head = NULL;	// set Head to NULL
+
+	NodePtr current = clist->Head;
+	while (current->Next != nullptr) {
+		if (Head == NULL) {
+			AddHead(current->Item);
+		}
+		else {
+			AddTail(current->Item);
+		}
+	}
+	return *this;
+}
+
+LinkedList LinkedList::operator=(const LinkedList* obj){
+	auto node = obj->Head;
+	NodePtr oldNode = nullptr;
+
+	while (node != NULL)
+	{
+		NodePtr newNode = new Node;
+		newNode->Item = node->Item;
+		oldNode->Next = newNode;
+
+
+		node = node->Next;
+		oldNode = node;
+	}
+
+	return *this;
 }
 
 // Destructor
 LinkedList::~LinkedList()
 {
 	while (Head != NULL) {		//Loop through deleting all
-		Node *tmp = Head;
+		NodePtr tmp = Head;
 		Head = Head->Next;
 		delete Head;
 	}	
@@ -33,7 +66,7 @@ void LinkedList::AddTail(int Item)
 	newNode->Item = Item;						//Set value
 	newNode->Next = NULL;						//Point to next node
 
-	Node *current = Head;
+	NodePtr current = Head;
 	if (Head == NULL) {
 		Head = newNode;							//Point at first Node
 	} else {
@@ -48,9 +81,9 @@ void LinkedList::AddTail(int Item)
 }
 
 bool LinkedList::RemoveTail() {
-	Node *current = Head;
+	NodePtr current = Head;
 	while (current) {
-		Node *tmp = Head;
+		NodePtr tmp = Head;
 		if (current->Next == NULL) {
 			tmp->Next = NULL;					//Set new End
 
@@ -59,8 +92,7 @@ bool LinkedList::RemoveTail() {
 		}
 		else {			
 			current = current->Next;
-			cout << current->Item << endl;
-			Node *tmp = current;				//Store place before end
+			NodePtr tmp = current;				//Store place before end
 		}
 	}
 	return false;
@@ -68,7 +100,7 @@ bool LinkedList::RemoveTail() {
 
 void LinkedList::AddHead(int Item) {
 
-	Node *newNode = new Node;
+	NodePtr newNode = new Node;
 	newNode->Item = Item;
 	newNode->Next = Head;
 	Head = newNode;
@@ -81,7 +113,7 @@ bool LinkedList::RemoveHead()
 	if (Head == NULL) {
 		return false;					//List is empty duh.
 	}	else {
-		Node *tmp = Head;				//Store Tmp for delete
+		NodePtr tmp = Head;				//Store Tmp for delete
 		Head = Head->Next;				//Update pointer
 
 		delete tmp;						//Clear Data
@@ -93,7 +125,7 @@ bool LinkedList::RemoveHead()
 // Prints contents of linked list
 void LinkedList::Print()
 {
-	Node *current = Head;
+	NodePtr current = Head;
 	while (current) {
 		cout << current->Item << endl;
 		if (current->Next != NULL) {
