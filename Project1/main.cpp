@@ -12,10 +12,37 @@ using namespace std;
 
 int main()
 {
-/*
-	LinkedList L1 . . .
-	Put your code for testing your list functions here
-*/
-	return 0;
-}
+	LinkedList *List = new LinkedList;
+	cout << "Adding '1' to Tail of List" << endl;
+	List->AddTail(1);
 
+	cout << "Adding '2' to Tail of List" << endl;
+	List->AddTail(2);
+
+	cout << "Adding '3' to Tail of List" << endl;
+	List->AddTail(3);
+
+	cout << "Printing current List" << endl;
+	List->Print();
+
+	cout << "Deleting Head of List" << endl;
+	List->RemoveHead();
+
+	cout << "Printing current List" << endl;
+	List->Print();
+
+	cout << "Deleting Tail of List" << endl;
+	List->RemoveTail();
+
+	cout << "Printing current List" << endl;
+	List->Print();
+
+	cout << "Adding '1' to Head of List" << endl;
+	List->AddHead(1);
+
+	cout << "Adding '3' to Tails of List" << endl;
+	List->AddTail(3);
+
+	cout << "Printing current List" << endl;
+	List->Print();
+}
