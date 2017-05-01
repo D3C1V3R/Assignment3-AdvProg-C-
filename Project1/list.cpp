@@ -17,7 +17,7 @@ LinkedList::LinkedList(){
 LinkedList::LinkedList(const LinkedList & obj){	
 	Head = NULL;						// set Head to NULL
 	NodePtr current = obj.Head;
-	if (current == nullptr) {
+	if (current == NULL) {
 		return;
 	}
 	while (current != NULL) {

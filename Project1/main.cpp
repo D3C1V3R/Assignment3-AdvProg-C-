@@ -47,13 +47,13 @@ int main()
 
 	LinkedList List2(*List1);				// List full
 											// Expected output is same as List1
-	cout << "Printing current List2" << endl;
+	cout << "Printing current List2 (Copy constructor with content)" << endl;
 	List2.Print();
 
 	LinkedList *List3e = new LinkedList;
 	LinkedList List3(*List3e);				//Empty list
 											//Expected output is nothing
-	cout << "Printing current List3" << endl;
+	cout << "Printing current List3 (Copy constructor without content)" << endl;
 	List3.Print();
 
 
@@ -66,7 +66,7 @@ int main()
 	List6.AddTail(57);
 
 	LinkedList List4 = List5 = List6;
-	cout << "Printing current List4" << endl;
+	cout << "Printing current List4 (Overload operator=)" << endl;
 	List4.Print();
 
 	return 0;
