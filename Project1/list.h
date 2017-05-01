@@ -1,8 +1,7 @@
 /*********************************************************************
  * CSCI251/851 - Assignment 3
  * list.h - Declaration of LinkedList class
- * Put you name, login and the date last modified here.
- *
+ * Christopher Aldous, ca797, 5096054 2/5/17
  *********************************************************************/
 
 #ifndef LIST_H
@@ -23,8 +22,8 @@ class LinkedList
 {
 	public:
 		LinkedList ();									// default constructor
-		LinkedList operator()(const LinkedList *clist); 			// copy constructor
-		LinkedList operator=(const LinkedList * obj);
+		LinkedList(const LinkedList & clist); 			// copy constructor
+		LinkedList operator=(const LinkedList & obj);	// operator= overload
 
 		~LinkedList();									// destructor
 		void  AddTail(int);								// adds item to tail

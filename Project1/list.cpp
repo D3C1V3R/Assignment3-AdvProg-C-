@@ -1,8 +1,7 @@
 /*********************************************************************
  * CSCI251/851 - Assignment 3
  * list.cpp - Implementation of LinkedList class.
- * Put you name, login and the date last modified here.
- *
+ * Christopher Aldous, ca797, 5096054 2/5/17
  *********************************************************************/
 
 #include <iostream>
@@ -14,47 +13,37 @@ LinkedList::LinkedList(){
 	Head = NULL; 	// set Head to NULL
 }
 
-// Copy constructor
-LinkedList LinkedList::operator()(const LinkedList *clist) {
-	Head = NULL;	// set Head to NULL
-
-	NodePtr current = clist->Head;
-	while (current->Next != nullptr) {
-		if (Head == NULL) {
-			AddHead(current->Item);
-		}
-		else {
-			AddTail(current->Item);
-		}
+//Copy constructor
+LinkedList::LinkedList(const LinkedList & obj){	
+	Head = NULL;						// set Head to NULL
+	NodePtr current = obj.Head;
+	if (current == nullptr) {
+		return;
 	}
-	return *this;
+	while (current != NULL) {
+		AddTail(current->Item);
+		current = current->Next;
+	}
+	return;
 }
 
-LinkedList LinkedList::operator=(const LinkedList* obj){
-	auto node = obj->Head;
-	NodePtr oldNode = nullptr;
+//Operator overload
+LinkedList LinkedList::operator=(const LinkedList & obj){
+	NodePtr current = obj.Head;
 
-	while (node != NULL)
-	{
-		NodePtr newNode = new Node;
-		newNode->Item = node->Item;
-		oldNode->Next = newNode;
-
-
-		node = node->Next;
-		oldNode = node;
+	while (current != NULL) {
+		AddTail(current->Item);
+		current = current->Next;
 	}
-
 	return *this;
 }
 
 // Destructor
-LinkedList::~LinkedList()
-{
+LinkedList::~LinkedList(){
 	while (Head != NULL) {		//Loop through deleting all
 		NodePtr tmp = Head;
 		Head = Head->Next;
-		delete Head;
+		delete tmp;
 	}	
 }
 

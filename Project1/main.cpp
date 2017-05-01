@@ -1,8 +1,7 @@
 /*********************************************************************
  * CSCI251/851 - Assignment 3
  * main.cpp - main() driver for testing LinkedList class.
- * Put you name, login and the date last modified here.
- *
+ * Christopher Aldous, ca797, 5096054 2/5/17
  *********************************************************************/
 
 #include <iostream>
@@ -46,27 +45,29 @@ int main()
 	cout << "Printing current List" << endl;
 	List1->Print();
 
-	LinkedList *List2(List1);
-
+	LinkedList List2(*List1);				// List full
+											// Expected output is same as List1
 	cout << "Printing current List2" << endl;
-	List2->Print();
+	List2.Print();
 
-	LinkedList *List3 = new LinkedList;;
-
+	LinkedList *List3e = new LinkedList;
+	LinkedList List3(*List3e);				//Empty list
+											//Expected output is nothing
 	cout << "Printing current List3" << endl;
-	List3->Print();
+	List3.Print();
 
 
-	LinkedList *List5 = new LinkedList;
-	List5->AddHead(54);
-	List5->AddHead(55);
-	LinkedList *List6 = new LinkedList;
-	List6->AddTail(56);
-	List6->AddTail(57);
+	LinkedList List5;
+	List5.AddTail(54);
+	List5.AddTail(55);
 
-	LinkedList *List4 = List5;
+	LinkedList List6;
+	List6.AddTail(56);
+	List6.AddTail(57);
+
+	LinkedList List4 = List5 = List6;
 	cout << "Printing current List4" << endl;
-	List4->Print();
+	List4.Print();
 
 	return 0;
 }
